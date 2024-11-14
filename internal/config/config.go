@@ -392,8 +392,10 @@ func (c *CharacterCfg) Validate() {
 		if c.Character.NovaSorceress.BossStaticThreshold < minThreshold || c.Character.NovaSorceress.BossStaticThreshold > 100 {
 			c.Character.NovaSorceress.BossStaticThreshold = minThreshold
 		}
+func (c *CharacterCfg) Validate() {
 	if c.NonExpansionMode {
-		c.Character.StashToShared = false // Shared stash not available in non-expansion
+		// Ensure compatibility with Non-Expansion Mode
+		c.Character.StashToShared = false // Disable shared stash
 		fmt.Println("Non-Expansion Mode: Shared stash disabled and Act 5 is skipped.")
 	}
 }
